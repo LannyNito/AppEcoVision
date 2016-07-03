@@ -8,8 +8,12 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class Main2Activity extends AppCompatActivity {
+
+    int preguntaActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,24 @@ public class Main2Activity extends AppCompatActivity {
         PreguntaSimple mifrag = new PreguntaSimple();
         fragmentTransaction.add(R.id.container, mifrag, "hola");
         fragmentTransaction.commit();
+    }
+
+
+    public void siguientePregunta(){
+
+        RadioGroup opciones = (RadioGroup) findViewById(R.id.opciones);
+
+        int elegida =  opciones.getCheckedRadioButtonId();
+
+        if(elegida != -1){
+            RadioButton opcion = (RadioButton) findViewById(elegida);
+
+            String texto = opcion.getText().toString();
+        }
+
+
+
+
     }
 
 }
