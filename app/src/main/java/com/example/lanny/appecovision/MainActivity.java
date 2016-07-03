@@ -1,13 +1,15 @@
 package com.example.lanny.appecovision;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +28,25 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        Button MiBoton = (Button) findViewById(R.id.button);
+
+
+        MiBoton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+
+            public void onClick(View arg0) {
+
+                Intent intento = new Intent(getApplicationContext(), Main2Activity.class);
+                startActivity(intento);
+
+            }
+
+        });
+
+
+
     }
 
     @Override
