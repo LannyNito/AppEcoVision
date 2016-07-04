@@ -4,16 +4,23 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity {
 
-    int preguntaActual;
+    int preguntaActual = 0;
+    String errados = "";
+
+    Item actual;
+
+    PreguntaSimple mifrag;
+
+    PreguntaImagenTriple mifragTri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,21 +33,28 @@ public class Main2Activity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                siguientePregunta();
+
             }
         });
+
+        actual = new Item();
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        PreguntaSimple mifrag = new PreguntaSimple();
+        mifrag = new PreguntaSimple();
+
+
         fragmentTransaction.add(R.id.container, mifrag, "hola");
         fragmentTransaction.commit();
+
     }
 
 
     public void siguientePregunta(){
+
+        if(Item.numeroItems < 11){
 
         RadioGroup opciones = (RadioGroup) findViewById(R.id.opciones);
 
@@ -50,10 +64,21 @@ public class Main2Activity extends AppCompatActivity {
             RadioButton opcion = (RadioButton) findViewById(elegida);
 
             String texto = opcion.getText().toString();
+
+
+        actual = new Item();
+
+        mifrag.initPregunta(actual.getImagen(), actual.getOpciones());
+
+            opciones.clearCheck();
+        }
+        else{
+            Toast.makeText(this, "Debe elegir una respuesta", Toast.LENGTH_SHORT).show();
         }
 
 
 
+    }
 
     }
 
