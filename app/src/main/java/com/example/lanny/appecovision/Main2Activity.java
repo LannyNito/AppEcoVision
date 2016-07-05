@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity {
 
-    int preguntaActual = 0;
+    int preguntaActual = 0, esLaUltima = 0;
     String errados = "";
 
     Item actual;
@@ -45,7 +45,6 @@ public class Main2Activity extends AppCompatActivity {
 
         mifrag = new PreguntaSimple();
 
-
         fragmentTransaction.add(R.id.container, mifrag, "hola");
         fragmentTransaction.commit();
 
@@ -54,31 +53,62 @@ public class Main2Activity extends AppCompatActivity {
 
     public void siguientePregunta(){
 
-        if(Item.numeroItems < 11){
-
-        RadioGroup opciones = (RadioGroup) findViewById(R.id.opciones);
-
-        int elegida =  opciones.getCheckedRadioButtonId();
-
-        if(elegida != -1){
-            RadioButton opcion = (RadioButton) findViewById(elegida);
-
-            String texto = opcion.getText().toString();
-
-
-        actual = new Item();
-
-        mifrag.initPregunta(actual.getImagen(), actual.getOpciones());
-
-            opciones.clearCheck();
+        if(esLaUltima == 1){
+            mifragTri.initPregunta("Seleccione la imagen con tonos rojos", R.drawable.eri_azulverde, R.drawable.eri_deuteranipia, R.drawable.eri_florblanca, R.drawable.eri_oso);
         }
-        else{
-            Toast.makeText(this, "Debe elegir una respuesta", Toast.LENGTH_SHORT).show();
+        else {
+
+            if (Item.numeroItems < 2) {
+
+                RadioGroup opciones = (RadioGroup) findViewById(R.id.opciones);
+
+                int elegida = opciones.getCheckedRadioButtonId();
+
+                if (elegida != -1) {
+                    RadioButton opcion = (RadioButton) findViewById(elegida);
+
+                    String texto = opcion.getText().toString();
+
+                    String[] array = actual.getOpciones();
+
+                    String correcta = "";
+
+                    for (String b : array) {
+                        if (b.contains("c")) {
+                            correcta = b.replace("c", "");
+                            break;
+                        }
+                    }
+
+                    if (correcta != texto) {
+                        errados += texto + ",";
+                    }
+
+
+                    actual = new Item();
+
+                    mifrag.initPregunta(actual.getImagen(), actual.getOpciones());
+
+                    opciones.clearCheck();
+                } else {
+                    Toast.makeText(this, "Debe elegir una respuesta", Toast.LENGTH_SHORT).show();
+                }
+
+
+            } else {
+
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                mifragTri = new PreguntaImagenTriple();
+
+                fragmentTransaction.replace(R.id.container, mifragTri, "hola");
+                fragmentTransaction.commit();
+
+                esLaUltima = 1;
+
+            }
         }
-
-
-
-    }
 
     }
 

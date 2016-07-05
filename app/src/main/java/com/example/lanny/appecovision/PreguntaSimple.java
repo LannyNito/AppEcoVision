@@ -2,6 +2,7 @@ package com.example.lanny.appecovision;
 
 
 import android.app.Fragment;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +44,22 @@ public class PreguntaSimple extends Fragment {
         View view = inflater.inflate(R.layout.fragment_pregunta_simple, container, false);
 
         image = (ImageView) view.findViewById(R.id.imageView);
+
+
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(image.isSelected() == false) {
+                    image.setSelected(true);
+                    image.setColorFilter(getResources().getColor(R.color.gris), PorterDuff.Mode.MULTIPLY );
+                }
+                else {
+                    image.setSelected(false);
+                    image.setColorFilter(null);
+                }
+            }
+        });
+
         r1 = (RadioButton) view.findViewById(R.id.radio1);
         r2 = (RadioButton) view.findViewById(R.id.radio2);
         r3 = (RadioButton) view.findViewById(R.id.radio3);
