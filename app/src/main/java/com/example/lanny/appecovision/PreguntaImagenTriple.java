@@ -18,10 +18,17 @@ public class PreguntaImagenTriple extends Fragment {
 
     private static ImageView image1, image2, image3, image4;
     private static TextView text;
+    public static int click1 = 0, click2 = 0, click3 = 0, click4 = 0;
+    public static int marcadas = 0;
 
 
     public PreguntaImagenTriple() {
         // Required empty public constructor
+    }
+
+    public void resetClicks(){
+        click1 = click2 = click3 = click4 = 0;
+        marcadas = 0;
     }
 
 
@@ -66,11 +73,19 @@ public class PreguntaImagenTriple extends Fragment {
                     image1.setSelected(true);
 
                     image1.setBackground(highlight);
+
+                    click1 = 1;
+
+                    marcadas++;
                 }
                 else {
                     image1.setSelected(false);
 
                     image1.setBackground(null);
+
+                    click1 = 0;
+
+                    marcadas--;
                 }
             }
         });
@@ -82,11 +97,19 @@ public class PreguntaImagenTriple extends Fragment {
                     image2.setSelected(true);
 
                     image2.setBackground(highlight);
+
+                    click2 = 1;
+
+                    marcadas++;
                 }
                 else {
                     image2.setSelected(false);
 
                     image2.setBackground(null);
+
+                    click2 = 0;
+
+                    marcadas--;
                 }
             }
         });
@@ -98,11 +121,19 @@ public class PreguntaImagenTriple extends Fragment {
                     image3.setSelected(true);
 
                     image3.setBackground(highlight);
+
+                    click3 = 1;
+
+                    marcadas++;
                 }
                 else {
                     image3.setSelected(false);
 
                     image3.setBackground(null);
+
+                    click3 = 0;
+
+                    marcadas--;
                 }
             }
         });
@@ -112,12 +143,21 @@ public class PreguntaImagenTriple extends Fragment {
             public void onClick(View v) {
                 if(image4.isSelected() == false) {
                     image4.setSelected(true);
+
                     image4.setBackground(highlight);
+
+                    click4 = 1;
+
+                    marcadas++;
                 }
                 else {
                     image4.setSelected(false);
 
                     image4.setBackground(null);
+
+                    click4 = 0;
+
+                    marcadas--;
                 }
             }
         });

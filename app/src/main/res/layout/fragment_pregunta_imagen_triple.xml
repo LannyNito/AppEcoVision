@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@drawable/fondo">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -27,13 +28,11 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:id="@+id/imagen1"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="31dp"
                 android:src="@drawable/acro_blanconegro"
                 android:layout_below="@+id/tituloImagenes"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="21dp"
-                android:layout_marginStart="21dp" />
+                android:layout_alignParentStart="true" />
 
             <ImageView
                 android:layout_width="150dp"
@@ -42,9 +41,7 @@
                 android:src="@drawable/acro_color"
                 android:layout_alignTop="@+id/imagen1"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="21dp"
-                android:layout_marginEnd="21dp" />
+                android:layout_alignParentEnd="true" />
 
             <ImageView
                 android:layout_width="150dp"
@@ -52,10 +49,9 @@
                 android:id="@+id/imagen3"
                 android:layout_below="@+id/imagen1"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+                android:layout_alignParentStart="false"
                 android:layout_marginTop="41dp"
-                android:src="@drawable/acro_estadio"
-                android:layout_marginLeft="21dp" />
+                android:src="@drawable/acro_estadio" />
 
             <ImageView
                 android:layout_width="150dp"

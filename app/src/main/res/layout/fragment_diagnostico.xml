@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lanny.appecovision.Diagnostico">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="#050505"
+        android:id="@+id/resultado"
+        android:background="@drawable/fondo" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salir"
+        android:id="@+id/salir"
+        android:layout_gravity="center_horizontal|bottom"
+        style="@style/Widget.AppCompat.Button.Colored" />
+
+</FrameLayout>
